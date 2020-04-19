@@ -4,7 +4,7 @@ from constraint import AllDifferentConstraint
 
 problem = Problem()
 
-# The poosible appointment times are 1, 2, 3 or 4
+# The possible appointment times are 1, 2, 3 or 4
 # There are four applicants: Ali, Bob, Cyl, and Dan
 
 problem.addVariable('Ali',[1,3,4])# Ali is busy from 2 to 3

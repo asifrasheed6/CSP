@@ -1,7 +1,9 @@
 from constraint import *
 p = Problem()
-p.addVariables(['Poland', 'Germany', 'Czech Republic', 'Slovakia', 'Hungary', 'Austria', 'Switzerland', 'Slovenia', 'Italy'],
-               ['red', 'green', 'blue', 'yellow'])
+europe = ['Poland', 'Germany', 'Czech Republic', 'Slovakia', 'Hungary', 'Austria', 'Switzerland', 'Slovenia', 'Italy']
+colors = ['red', 'green', 'blue', 'yellow']
+
+p.addVariables(europe, colors)
 
 def constraints(pol, ger, cze, slovak, hun, aus, switz, sloven, it):
     if pol in [ger, cze, slovak]:
@@ -20,8 +22,11 @@ def constraints(pol, ger, cze, slovak, hun, aus, switz, sloven, it):
         return False
     return True
 
-p.addConstraint(constraints, ['Poland', 'Germany', 'Czech Republic', 'Slovakia', 'Hungary', 'Austria', 'Switzerland', 'Slovenia', 'Italy'])
-for x,y in p.getSolution().items():
+p.addConstraint(constraints, europe)
+sol = p.getSolutions()
+print('Number of solutions (with min. 4 colors):', len(sol), '\n')
+print('Solution:\n')
+for x,y in sol[0].items():
     print(x + ':', y)
 
 

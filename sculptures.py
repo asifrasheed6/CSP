@@ -16,7 +16,8 @@ p.addConstraint(constr, ['IceSwan', 'GoldLion'])
 #sculptures placed on different tables
 p.addConstraint(AllDifferentConstraint(), ['IceSwan', 'GoldLion', 'MarblePyramid'])
 
-for i in p.getSolutions():
-    print('IceSwan placed on table:', i['IceSwan'],
-          '\nGoldLion placed on table:', i['GoldLion'],
-          '\nMarblePyramid placed on table:', i['MarblePyramid'])
+sol = p.getSolution()
+print('Solution:\n')
+print('IceSwan placed on table:', sol['IceSwan'])
+print('GoldLion placed on table:', sol['GoldLion'])
+print('MarblePyramid placed on table:', sol['MarblePyramid'])

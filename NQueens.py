@@ -5,11 +5,12 @@ from time import perf_counter
 from constraint import MinConflictsSolver
 
 # Solving using incremental approach
+max_time = 1 # maximum time allowed to solve each N
 times = [] # Stores time taken to solve each N
 N = 1 # Variable
 start,end=0,0
 N = 1 # Number of Queens
-while end-start<20: # The program would wait upto 5 minutes for solving a problem
+while end-start<max_time: # The program would wait upto 5 minutes for solving a problem
     problem = Problem()
     
     cols = range(N) # Number of Columns
@@ -42,7 +43,7 @@ times = [] # Stores time taken to solve each N
 N = 1 # Variable
 start,end=0,0
 N = 1 # Number of Queens
-while end-start<20: # The program would wait upto 5 minutes for solving a problem
+while end-start<max_time: # The program would wait upto 5 minutes for solving a problem
     problem = Problem()
     
     cols = range(N) # Number of Columns

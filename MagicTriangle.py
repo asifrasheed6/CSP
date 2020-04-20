@@ -29,6 +29,7 @@ for S in range(9,13):
     print('',solutions[-1]['E1'],' ',solutions[-1]['E2'])
     print(solutions[-1]['C3'],'',solutions[-1]['E3'],'',solutions[-1]['C2'])
     print()
+    
 # Magic triangle with 9 circles (4 on each side), so possible sum is 17,19,20,21,23
 print('==========MAGIC TRIANGLE WITH 9 CIRCLES==========\n')
 for S in range(17,24):

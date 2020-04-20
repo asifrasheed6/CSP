@@ -38,7 +38,6 @@ for time in times:
     print(time[0],'\t',str(time[1])+' seconds')
     
 # Solcing using iterative approach
-print('\nIterative Approach')
 times = [] # Stores time taken to solve each N
 N = 1 # Variable
 start,end=0,0

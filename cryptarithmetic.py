@@ -22,18 +22,18 @@ for i in p.getSolutions():
 #SEND + MORE = MONEY (with explicit carry)
 p2 = Problem()
 
-#M has a fixed domain since it's a carry of S + M (so M is 1)
-p2.addVariable('M', [1])
-p2.addVariable('S', range(1, 10))
+#HIJK are the explictly defined carries (can have only 0 or 1 as domain)
+p2.addVariables('IJK', range(2))
+p2.addVariables('SM', range(1, 10))
 p2.addVariables('ENDORY', range(10))
 
-def constraint2(s, e, n, d, o, r, y):
-    return (s*1000 + e*100 + n*10 + d) + (1000 + o*100 + r*10 + e) == (10000 + o*1000 + n*100 + e*10 + y)
+def constraint2(s, m, e, n, d, o, r, y, i, j, k):
+    return (s + m + i == o + 10*m) and (e + o + j == n + i*10) and (n + r + k == e + j*10 ) and (d + e == y + k*10)
 
-p2.addConstraint(constraint2, 'SENDORY')
+p2.addConstraint(constraint2, 'SMENDORYIJK')
 p2.addConstraint(AllDifferentConstraint(), 'SMENDORY') #All have to be different
 
-print('\nSEND + MORE = MONEY (with explicit carry)\n-----------------------------------------')
+print('\nSEND + MORE = MONEY (with explicit carries)\n-------------------------------------------')
 for i in p2.getSolutions():
     print('{}{}{}{} + {}{}{}{} = {}{}{}{}{}'.format(i['S'], i['E'], i['N'], i['D'], i['M'], i['O'], i['R'], i['E'],
                                                     i['M'], i['O'], i['N'], i['E'], i['Y']))

@@ -5,6 +5,7 @@ colors = ['red', 'green', 'blue', 'yellow']
 
 p.addVariables(europe, colors)
 
+#neighbouring countries should have different colours
 def constraints(pol, ger, cze, slovak, hun, aus, switz, sloven, it):
     if pol in [ger, cze, slovak]:
         return False

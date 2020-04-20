@@ -1,32 +1,43 @@
 # N Queens Problem
 from constraint import Problem
 from constraint import AllDifferentConstraint
-from constraint import MinConflictSolver
+from time import perf_counter
+#from constraint import MinConflictSolver
 
-problem = Problem()
 
-# Solcing using incremental approach
-# Variable
-N = int(input('Enter N:'))
-for i in range(N):
-    problem.addVariable(i,[(i,j) for i in range(N) for j in range(N)]) # All the possible location in the chess board is added as tuples
 
-# Constraints
-problem.addConstraint(AllDifferentConstraint(), [i for i in range(N)]) # The Queens should be placed in diifferent sqares
+# Solving using incremental approach
+solver = [] # Stores time taken to solve each N
+N = 1 # Variable
+start,end=0,0
+N = 1
+while end-start<20: # The program would wait upto 5 minutes for solving a problem
+    problem = Problem()
+    cols = range(N)
+    rows = range(N)
+    problem.addVariables(cols, rows)
+    for col1 in cols:
+        for col2 in cols:
+            if col1 < col2:
+                problem.addConstraint(
+                    lambda row1, row2, col1=col1,
+                    col2=col2: abs(row1 - row2) !=
+                    abs(col1 - col2) and row1 != row2,
+                    (col1, col2),
+                )
+    
+    start = perf_counter() # Starting Counter
+    solutions = problem.getSolutions()
+    end = perf_counter() # Ending Counter
+    solver.append((N,end-start))
 
-def cells(*args): # No two Queens are in the same row or column and diagonally aligned
-    for i in range(len(args)):
-        for j in range(1,len(args)):
-            if (args[i][0]==args[j][0] or args[i][1]==args[j][1] or abs(args[i][0]-args[j][0])==abs(args[i][1]-args[j][1])) and i!=j:
-                return False
-    return True
-problem.addConstraint(cells, [i for i in range(N)])
-
-solutions = problem.getSolutions()
-print('Possible Solutions for the Puzzle:')
-if len(solutions)>0:
-    for i in range(N):
-        print(solutions[-1][i],end=' ')
-    print()
-
+    print('Possible Solution for',N,'Queens Puzzle:', end=' ')
+    if len(solutions)>0:
+        solution = [(k, v) for k, v in solutions[-1].items()]
+        for p in solution:
+            print(p,end=' ')
+        print()
+    else:
+        print('No solution')
+    N+=1
 # Solcing using iterative approach

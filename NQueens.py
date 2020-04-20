@@ -1,13 +1,15 @@
 # N Queens Problem
 from constraint import Problem
 from constraint import AllDifferentConstraint
+from constraint import MinConflictSolver
 
 problem = Problem()
 
+# Solcing using incremental approach
 # Variable
-N = int(input('Enter the number of Queens: '))
+N = int(input('Enter N:'))
 for i in range(N):
-    problem.addVariable(i,[(i,j) for i in range(8) for j in range(8)]) # All the possible location in the chess board is added as tuples
+    problem.addVariable(i,[(i,j) for i in range(N) for j in range(N)]) # All the possible location in the chess board is added as tuples
 
 # Constraints
 problem.addConstraint(AllDifferentConstraint(), [i for i in range(N)]) # The Queens should be placed in diifferent sqares
@@ -20,10 +22,11 @@ def cells(*args): # No two Queens are in the same row or column and diagonally a
     return True
 problem.addConstraint(cells, [i for i in range(N)])
 
-
 solutions = problem.getSolutions()
 print('Possible Solutions for the Puzzle:')
-for solution in solutions:
+if len(solutions)>0:
     for i in range(N):
-        print(solution[i],end=' ')
+        print(solutions[-1][i],end=' ')
     print()
+
+# Solcing using iterative approach

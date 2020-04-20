@@ -21,26 +21,26 @@ problem = Problem()
 '''
 
 # Variables
-problem.addVariable('1',range(10**6,10**7)) # Solution 1 has 8 digits
-problem.addVariable('2',range(10**5,10**6)) # Solution 2 has 7 digits
-problem.addVariable('3',range(10**6,10**7)) # Solution 3 has 8 digits
-problem.addVariable('4',range(10**6,10**7)) # Solution 4 has 8 digits
-problem.addVariable('5a',range(10**4,10**5)) # Solution 5a has 6 digits
-problem.addVariable('5b',range(10**7,10**8)) # Solution 5b has 9 digits
-problem.addVariable('6',range(10**3,10**4)) # Solution 6 has 5 digits
-problem.addVariable('7',range(10**5,10**6)) # Solution 7 has 7 digits
-problem.addVariable('8',range(10**4,10**5)) # Solution 8 has 6 digits
-problem.addVariable('9',range(10**8,10**9)) # Solution 9 has 10 digits
-problem.addVariable('10',range(10**3,10**4)) # Solution 10 has 5 digits
+problem.addVariable('1',range(10**4,10**5)) # Solution 1 has 8 digits
+problem.addVariable('2',range(10**3,10**4)) # Solution 2 has 7 digits
+problem.addVariable('3',range(10**4,10**5)) # Solution 3 has 8 digits
+problem.addVariable('4',range(10**4,10**5)) # Solution 4 has 8 digits
+problem.addVariable('5a',range(10**2,10**3)) # Solution 5a has 6 digits
+problem.addVariable('5b',range(10**5,10**6)) # Solution 5b has 9 digits
+problem.addVariable('6',range(10**1,10**2)) # Solution 6 has 5 digits
+problem.addVariable('7',range(10**3,10**4)) # Solution 7 has 7 digits
+problem.addVariable('8',range(10**2,10**3)) # Solution 8 has 6 digits
+problem.addVariable('9',range(10**6,10**7)) # Solution 9 has 10 digits
+problem.addVariable('10',range(10**1,10**2)) # Solution 10 has 5 digits
 
 # Constraints
-problem.addConstraint(lambda a,b,c: str(a)[0]==str(b)[0] and str(a)[3]==str(c)[2], ['1','3','5a'] )
-problem.addConstraint(lambda a,b,c: str(a)[-1]==str(b)[-2] and str(a)[2]==str(c)[0], ['2','3','5a'] )
-problem.addConstraint(lambda a,b: str(a)[5]==str(b)[0], ['4','8'])
-problem.addConstraint(lambda a,b,c: str(a)[3]==str(b)[3] and str(a)[5]==str(c)[-1], ['5b','8','9'])
-problem.addConstraint(lambda a,b: str(a)[2]==str(b)[2], ['6','9'])
-problem.addConstraint(lambda a,b: str(a)[2]==str(b)[6], ['7','9'])
-problem.addConstraint(lambda a,b: str(a)[4]==str(b)[-2], ['9','10'])
+problem.addConstraint(lambda a,b,c: str(a)[-2]==str(b)[-2] and str(a)[1]==str(c)[0], ['1','3','5a'] )
+problem.addConstraint(lambda a,b,c: str(a)[-3]==str(b)[-4] and str(a)[0]==str(c)[-2], ['2','3','5a'] )
+problem.addConstraint(lambda a,b: str(a)[3]==str(b)[-2], ['4','8'])
+problem.addConstraint(lambda a,b,c: str(a)[1]==str(b)[1] and str(a)[3]==str(c)[-3], ['5b','8','9'])
+problem.addConstraint(lambda a,b: str(a)[0]==str(b)[0], ['6','9'])
+problem.addConstraint(lambda a,b: str(a)[0]==str(b)[4], ['7','9'])
+problem.addConstraint(lambda a,b: str(a)[2]==str(b)[-2], ['9','10'])
 
 problem.setSolver(MinConflictsSolver())
 solution = problem.getSolution()

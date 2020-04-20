@@ -30,6 +30,7 @@ while end-start<20: # The program would wait upto 5 minutes for solving a proble
     solutions = problem.getSolutions()
     end = perf_counter() # Ending Counter
     times.append((N,end-start)) # Stores Number of Queens and Time Taken to Solve the Puzzle
+    N+=1
 
 print('Total Time Taken to Solve The Puzzle using Incremental Approach:')
 print('N\t Time')
@@ -58,11 +59,11 @@ while end-start<20: # The program would wait upto 5 minutes for solving a proble
                     abs(col1 - col2) and row1 != row2,
                     (col1, col2),
                 )
+                
     problem.setSolver(MinConflictsSolver())
     start = perf_counter() # Starting Counter
     solution = problem.getSolution() # Minimum Conflict Solver only returns one solution
     end = perf_counter() # Ending Counter
-    
     times.append((N,end-start)) # Stores Number of Queens and Time Taken to Solve the Puzzle
     N+=1
 

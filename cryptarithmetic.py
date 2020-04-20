@@ -22,7 +22,7 @@ for i in p.getSolutions():
 #SEND + MORE = MONEY (with explicit carry)
 p2 = Problem()
 
-#HIJK are the explictly defined carries (can have only 0 or 1 as domain)
+#IJK are the explictly defined carries (can have only 0 or 1 as domain)
 p2.addVariables('IJK', range(2))
 p2.addVariables('SM', range(1, 10))
 p2.addVariables('ENDORY', range(10))

@@ -1,5 +1,6 @@
 # Cross Number Grid Generator
 from constraint import Problem
+from constraint import MinConflictsSolver
 
 problem = Problem()
 
@@ -40,17 +41,17 @@ problem.addConstraint(lambda a,b: str(a)[4]==str(b)[4], ['6','9'])
 problem.addConstraint(lambda a,b: str(a)[4]==str(b)[8], ['7','9'])
 problem.addConstraint(lambda a,b: str(a)[6]==str(b)[0], ['9','10'])
 
-solutions = problem.getSolutions()
+problem.setSolver(MinConflictsSolver())
+solution = problem.getSolution()
 
-for solution in solutions:
-    print('Number 1:',solution['1'])
-    print('Number 2:',solution['2'])
-    print('Number 3:',solution['3'])
-    print('Number 4:',solution['4'])
-    print('Number 5(Across):',solution['5a'])
-    print('Number 5(Down):',solution['5b'])
-    print('Number 6:',solution['6'])
-    print('Number 7:',solution['7'])
-    print('Number 8:',solution['8'])
-    print('Number 9:',solution['9'])
-    print('Number 10:',solution['10'])
+print('Number 1:',solution['1'])
+print('Number 2:',solution['2'])
+print('Number 3:',solution['3'])
+print('Number 4:',solution['4'])
+print('Number 5(Across):',solution['5a'])
+print('Number 5(Down):',solution['5b'])
+print('Number 6:',solution['6'])
+print('Number 7:',solution['7'])
+print('Number 8:',solution['8'])
+print('Number 9:',solution['9'])
+print('Number 10:',solution['10'])
